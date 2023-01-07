@@ -14,7 +14,7 @@ function App() {
     <Sidebar/>
     <EmailList/>
     <Rightbar/>
-    <Compose/>
+    {/* <Compose/> */}
     </>
   )
 }

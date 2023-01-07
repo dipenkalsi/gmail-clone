@@ -13,8 +13,8 @@ const Header = () => {
       <div className='header_left flex items-center justify-center w-fit'>
         <IconButton><MenuIcon/></IconButton>
         <div className='flex items-center justify-center space-x-4 ml-2 cursor-pointer'>
-        <img src="https://lh3.googleusercontent.com/0rpHlrX8IG77awQMuUZpQ0zGWT7HRYtpncsuRnFo6V3c8Lh2hPjXnEuhDDd-OsLz1vua4ld2rlUYFAaBYk-rZCODmi2eJlwUEVsZgg" alt="" className='h-10 w-auto' />
-        <p className='text-2xl text-gray-500 font-normal'>Gmail</p>
+        <img src="https://logodownload.org/wp-content/uploads/2018/03/gmail-logo-1-1.png" alt="" className='h-7 w-auto' />
+        {/* <p className='text-2xl text-gray-500 font-normal'>Gmail</p> */}
         </div>
       </div>
       <div className='header_middle w-1/2 shadow-sm bg-indigo-50 py-1 px-1 rounded-lg'>

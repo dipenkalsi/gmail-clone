@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import CreateIcon from '@mui/icons-material/Create';
 import SidebarOption from './SidebarOption';
 import InboxIcon from '@mui/icons-material/Inbox';
@@ -11,11 +11,19 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import AddIcon from '@mui/icons-material/Add';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import DraftsIcon from '@mui/icons-material/Drafts';
+import { openCompose, selectShowCompose } from '../features/mailSlice';
 import CategoryIcon from '@mui/icons-material/Category';
+import Compose from './Compose';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 const Sidebar = () => {
+  const showCompose = useSelector(selectShowCompose);
+  const dispatch=useDispatch();
   return (
+    <>
+    {showCompose&&<Compose setShowCompose={showCompose}/>}
     <div className='fixed left-0 top-20 w-60'>
-    <button className='flex mt-1 justify-center items-center space-x-2 text-lg border py-2 px-5 ml-2  hover:bg-red-50 transition-all ease-in duration-150  text-red-600 rounded-full shadow-sm'>
+    <button className='flex mt-1 justify-center items-center space-x-2 text-lg border py-2 px-5 ml-2  hover:bg-red-50 transition-all ease-in duration-150 text-red-600 rounded-full shadow-sm' onClick={()=>dispatch(openCompose())}>
         <CreateIcon/>
         <p>Compose</p>
     </button>
@@ -51,6 +59,7 @@ const Sidebar = () => {
     </div>
     </div>
     </div>
+    </>
   )
 }
 
