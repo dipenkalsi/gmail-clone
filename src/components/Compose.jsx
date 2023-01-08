@@ -14,8 +14,11 @@ import AddToDriveIcon from '@mui/icons-material/AddToDrive';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useDispatch } from 'react-redux';
+import Snackbar from '@mui/material/Snackbar';
+import { useDispatch ,useSelector} from 'react-redux';
 import './compose.css';
+import Button from '@mui/material/Button';
+import { selectUser } from '../features/userSlice';
 import { db } from '../firebase';
 import firebase from 'firebase';
 import { closeCompose } from '../features/mailSlice';
@@ -23,11 +26,42 @@ const Compose = () => {
   const [to,setTo]=useState("");
   const [subject,setSubject]=useState("");
   const [message,setMessage]=useState("");
-  const dispatch=useDispatch()
+  const [open, setOpen] = useState(false);
   const [isMinimized , setIsMinimized]=useState(false)
+  const user=useSelector(selectUser);
+
+  const dispatch=useDispatch()
   const handleMinimizeClick=()=>{
     setIsMinimized(!isMinimized)
   }
+
+  const handleClick = () => {
+       setOpen(true); 
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <Button color="info" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
+
   const handleSubmit=(e)=>{
     e.preventDefault();
     if(to==""){
@@ -43,15 +77,18 @@ const Compose = () => {
       to,
       subject,
       message,
-      timestamp:firebase.firestore.FieldValue.serverTimestamp()
+      from:user.email,
+      senderName:user.displayName,
+      timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+      senderPhoto:user.photoURL
     })
     setTo("");
     setMessage("");
     setSubject("");
-    alert("Email sent successfully")
-    dispatch(closeCompose())
+    dispatch(closeCompose());
   }
   return (
+    <>
     <div className={`fixed bottom-0 right-14 border bg-gray-50 z-20 shadow-md rounded-t-xl ${isMinimized?"h-[6%]":"h-[72%]"} w-[40%]`}>
       <div className='header rounded-t-xl w-full bg-gray-800 text-white text-sm flex pl-3 items-center justify-between'>
         <div>
@@ -77,7 +114,7 @@ const Compose = () => {
       </div>
       <div className='footer mt-2 flex'>
         <div className='left px-3'>
-          <button type='submit' className='bg-blue-700 px-5 py-2 text-white rounded-l-md hover:bg-blue-800 transition-all ease-in duration-150 text-sm font-semibold'>Send</button>
+          <button type='submit' className='bg-blue-700 px-5 py-2 text-white rounded-l-md hover:bg-blue-800 transition-all ease-in duration-150 text-sm font-semibold' onClick={handleClick}>Send</button>
           <button className='bg-blue-700 px-1 pb-1.5 pt-[5.5px] text-white rounded-r-md border-l border-black hover:bg-blue-800 transition-all ease-in duration-150'><ArrowDropDownIcon fontSize='small'/></button>
         </div>
         
@@ -118,6 +155,7 @@ const Compose = () => {
       </div>
       </form>
     </div>
+    </>
   )
 }
 

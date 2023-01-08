@@ -1,17 +1,18 @@
 import React from 'react'
 import { IconButton } from '@mui/material'
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-const EmailListSetting = () => {
+import { useNavigate } from 'react-router-dom';
+const EmailListSetting = ({Icon}) => {
+  const navigate=useNavigate()
   return (
     <div className='flex items-center justify-between w-full border-b '>
       <div className='left'>
-      <IconButton>
-            <CheckBoxOutlineBlankIcon/>
+      <IconButton onClick={()=>{navigate(-1)}}>
+            <Icon/>
         </IconButton>
         <IconButton>
             <RefreshIcon/>
