@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React,{ useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import Header from './components/Header'
@@ -13,8 +13,10 @@ import {BrowserRouter as Router , Routes , Route  } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth } from './firebase'
 import SentMails from './components/SentMails'
+import { selectTheme } from './features/themeSlice';
 function App() {
   const dispatch=useDispatch()
+  const theme=useSelector(selectTheme);
   const user=useSelector(selectUser)
   useEffect(()=>{
     auth.onAuthStateChanged((user)=>{
@@ -31,7 +33,7 @@ function App() {
     })
   },[])
   return (
-    <>
+    <div className={theme==="dark"?"bg-[#00001a]":""}>
     {user ? (
       <Router>
       <Header/>
@@ -46,7 +48,7 @@ function App() {
       </Router>
     ):(<Login/>) }
     
-    </>
+    </div>
   )
 }
 

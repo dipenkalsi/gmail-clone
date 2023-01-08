@@ -4,7 +4,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import { auth ,provider} from '../firebase';
+import { auth , provider} from '../firebase';
 import { useDispatch } from 'react-redux';
 import { signIn } from '../features/userSlice';
 const Login = () => {

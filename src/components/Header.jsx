@@ -1,46 +1,50 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import SettingsIcon from '@mui/icons-material/Settings';
 import TuneIcon from '@mui/icons-material/Tune';
+import { switchTheme } from '../features/themeSlice';
 import AppsIcon from '@mui/icons-material/Apps';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, signOut } from '../features/userSlice';
+import { selectTheme } from '../features/themeSlice';
 const Header = () => {
   const user=useSelector(selectUser);
+  const theme=useSelector(selectTheme);
+
   const dispatch = useDispatch()
-console.log(user)
   return (
-    <div className='header flex items-center justify-between px-2 py-3 border-b fixed top-0 w-full z-20 bg-white'>
-      <div className='header_left flex items-center justify-center w-fit'>
-        <IconButton><MenuIcon/></IconButton>
+    <div className={`${theme}`}>
+    <div className={`header flex items-center justify-between px-2 py-3 border-b fixed top-0 w-full z-20 bg-white dark:bg-[#00001a] ${theme}`}>
+      <div className='header_left flex items-center justify-center w-fit dark:text-white'>
+        <IconButton color={theme==="dark"?'inherit':""}><MenuIcon/></IconButton>
         <div className='flex items-center justify-center space-x-4 ml-2 cursor-pointer'>
-        <img src="https://logodownload.org/wp-content/uploads/2018/03/gmail-logo-1-1.png" alt="" className='h-7 w-auto' />
+        <img src="https://logodownload.org/wp-content/uploads/2018/03/gmail-logo-1-1.png" alt="" className='h-7 w-auto dark:invert' />
         </div>
       </div>
       <div className='header_middle w-1/2 shadow-sm bg-indigo-50 py-1 px-1 rounded-lg'>
-        <div className='search_mail w-full flex items-center'>
-          <IconButton>
+        <div className='search_mail w-full flex items-center '>
+          <IconButton color={theme==="dark"?'inherit':""}>
             <SearchIcon/>
           </IconButton>
           <input type="text" placeholder='Search in mail' className='ml-1 focus:ring-0 focus:outline-0 w-[85%] bg-transparent text-gray-600'/>
-          <IconButton>
+          <IconButton color={theme==="dark"?'inherit':""}>
             <TuneIcon/>
           </IconButton>
         </div>
         </div>
         <div className='header_right'>
-          <div className='icons_box flex items-center justify-center space-x-1.5'>
-          <IconButton>
-            <HelpOutlineIcon/>
+          <div className='icons_box flex items-center justify-center space-x-1.5 dark:text-white'>
+          <IconButton onClick={()=>dispatch(switchTheme())} color={theme==="dark"?'inherit':""} >
+            {theme==="light"?<DarkModeIcon/>:<LightModeIcon/>}
           </IconButton>
-          <IconButton>
+          <IconButton color={theme==="dark"?'inherit':""}>
             <SettingsIcon/>
           </IconButton>
-          <IconButton>
+          <IconButton color={theme==="dark"?'inherit':""}>
             <AppsIcon/>
           </IconButton>
           
@@ -50,6 +54,7 @@ console.log(user)
           </div>
         </div>
       
+    </div>
     </div>
   )
 }
