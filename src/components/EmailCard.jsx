@@ -5,12 +5,13 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import LabelImportantSharpIcon from '@mui/icons-material/LabelImportantSharp';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import {openMessage} from '../features/mailSlice'
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../features/themeSlice';
 
 const EmailCard = ({name , subject , body , timestamp , from , senderName , senderPhoto ,to}) => {
+  const theme=useSelector(selectTheme);
   const location=useLocation()
-  const navigate=useNavigate()
   const dispatch=useDispatch();
   const setMail=()=>{
     dispatch(openMessage({
@@ -23,30 +24,29 @@ const EmailCard = ({name , subject , body , timestamp , from , senderName , send
       senderPhoto,
       to
     }))
-    // navigate("/mail")
   }
   return (
-    <div className='border-b hover:shadow-md  cursor-pointer transition-all ease-in duration-150 flex justify-between items-center px-3 hover:bg-gray-50 py-0.5' onClick={setMail}>
+    <div className={`border-b hover:shadow-md  cursor-pointer transition-all ease-in duration-150 flex justify-between items-center px-3 ${theme==="dark"?"dark:hover:bg-red-700":""} hover:bg-gray-50 py-0.5 ${theme}`} onClick={setMail}>
       <div className='left flex items-center space-x-2'>
-        <div className='text-gray-300'>
-            <IconButton size='small' >
+        <div className='text-gray-300 dark:text-white'>
+            <IconButton size='small' color={theme==="dark"?"inherit":""} >
                 <CropSquareIcon/>
             </IconButton>
-            <IconButton size='small' >
+            <IconButton size='small' color={theme==="dark"?"inherit":""}  >
                 <StarBorderIcon/>
             </IconButton>
-            <IconButton size='small' >
+            <IconButton size='small' color={theme==="dark"?"inherit":""}  >
                 <LabelImportantSharpIcon/>
             </IconButton>
         </div>
-        <p className='font-bold text-sm'>{location.pathname==="/"?name:to}</p>
+        <p className='font-bold text-sm dark:text-white'>{location.pathname==="/"?name:to}</p>
       </div>
       <div className='middle flex items-center justify-center'>
-        <p className='font-bold text-sm '>{subject.length>90?subject.split("").slice(0,90).join(""):subject} </p>
-        <p className='text-sm  font-semibold text-gray-500'> - {subject.length<=90?body.split("").slice(0,90-subject.length).join(""):""}...</p>
+        <p className='font-bold text-sm dark:text-white'>{subject.length>90?subject.split("").slice(0,90).join(""):subject} </p>
+        <p className='text-sm  font-semibold text-gray-500 dark:text-gray-300'> - {subject.length<=90?body.split("").slice(0,90-subject.length).join(""):""}...</p>
       </div>
       <div className='right'>
-        <p className='font-bold text-sm'>{timestamp}</p>
+        <p className='font-bold text-sm dark:text-white'>{timestamp}</p>
       </div>
     </div>
   )
