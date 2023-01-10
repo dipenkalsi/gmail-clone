@@ -32,7 +32,7 @@ const EmailList = () => {
       <div>
         {
           emails.filter(performCheck)?.map(({id,data})=>{
-            return <Link to={`/mail`}>
+            return <Link to={`/mail/${id}`}>
             <EmailCard key={id} name={data.senderName} subject={data.subject} body={data.message} timestamp={new Date(data.timestamp?.seconds*1000).toLocaleTimeString()} from={data.from} senderPhoto={data.senderPhoto}/>
             </Link>
           })        

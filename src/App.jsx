@@ -40,7 +40,7 @@ function App() {
       <Sidebar/>
       <Routes>
         <Route path="/" exact element={<EmailList/>}/>
-        <Route path="/mail" exact element={<MailDetail/>}/>
+        <Route path="/mail/:id" exact element={<MailDetail/>}/>
         <Route path="/sent" exact element={<SentMails/>}/>
   
       </Routes> 

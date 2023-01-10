@@ -20,9 +20,11 @@ import './compose.css';
 import Button from '@mui/material/Button';
 import { selectUser } from '../features/userSlice';
 import { db } from '../firebase';
+import { selectTheme } from '../features/themeSlice';
 import firebase from 'firebase';
 import { closeCompose } from '../features/mailSlice';
 const Compose = () => {
+  const theme = useSelector(selectTheme);
   const [to,setTo]=useState("");
   const [subject,setSubject]=useState("");
   const [message,setMessage]=useState("");
@@ -45,22 +47,6 @@ const Compose = () => {
     }
     setOpen(false);
   };
-
-  const action = (
-    <React.Fragment>
-      <Button color="info" size="small" onClick={handleClose}>
-        UNDO
-      </Button>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
 
   const handleSubmit=(e)=>{
     e.preventDefault();
@@ -89,8 +75,8 @@ const Compose = () => {
   }
   return (
     <>
-    <div className={`fixed bottom-0 right-14 border bg-gray-50 z-20 shadow-md rounded-t-xl ${isMinimized?"h-[6%]":"h-[72%]"} w-[40%]`}>
-      <div className='header rounded-t-xl w-full bg-gray-800 text-white text-sm flex pl-3 items-center justify-between'>
+    <div className={`fixed bottom-0 right-14 border bg-gray-50 z-20 shadow-md rounded-t-xl ${isMinimized?"h-[6%]":"h-[72%]"} w-[40%] ${theme=="dark"?"bg-[#1a0000]":""} ${theme}`}>
+      <div className='header rounded-t-xl w-full bg-gray-800  text-white text-sm flex pl-3 items-center justify-between'>
         <div>
           <p className='font-semibold text-gray-100 font-mono'>New Message</p>
         </div>
@@ -108,47 +94,47 @@ const Compose = () => {
       </div>
       <form onSubmit={handleSubmit}>
       <div className='body'>
-        <input type="email" placeholder='Recipients' className='w-[95%] focus:ring-0 focus:outline-0 border-b mx-3 font-medium placeholder:text-red-300 text-red-600 py-1 mt-1 text-sm font-mono bg-transparent border-gray-400' spellCheck='false' value={to} onChange={(e)=>{setTo(e.target.value)}} name="recipient"/>
-        <input type="text" placeholder='Subject' className='w-[95%] focus:ring-0 focus:outline-0 border-b mx-3 font-medium  py-1 mt-1 text-sm  text-gray-600 font-mono bg-transparent border-gray-400' spellCheck='false' value={subject} onChange={(e)=>{setSubject(e.target.value)}} name="subject"/>
-        <textarea placeholder='Message body' className='w-[95%] focus:ring-0 focus:outline-0  mx-3 font-mono text-gray-500 py-1 mt-1 text-sm example bg-transparent' rows="13" style={{resize:"none"}} spellCheck='false' value={message} onChange={(e)=>{setMessage(e.target.value)}} name="message"/>
+        <input type="email" placeholder='Recipients' className='w-[95%] focus:ring-0 focus:outline-0 border-b mx-3 font-medium placeholder:text-red-300 dark:placeholder:text-red-400 text-red-600 dark:text-red-300 py-1 mt-1 text-sm font-mono bg-transparent border-gray-400' spellCheck='false' value={to} onChange={(e)=>{setTo(e.target.value)}} name="recipient"/>
+        <input type="text" placeholder='Subject' className='w-[95%] dark:text-white font-semibold focus:ring-0 focus:outline-0 border-b mx-3 py-1 mt-1 text-sm  text-gray-600 font-mono bg-transparent border-gray-400' spellCheck='false' value={subject} onChange={(e)=>{setSubject(e.target.value)}} name="subject"/>
+        <textarea placeholder='Message body' className='w-[95%] dark:text-white focus:ring-0 focus:outline-0  mx-3 font-mono text-gray-500 py-1 mt-1 text-sm example bg-transparent' rows="13" style={{resize:"none"}} spellCheck='false' value={message} onChange={(e)=>{setMessage(e.target.value)}} name="message"/>
       </div>
       <div className='footer mt-2 flex'>
         <div className='left px-3'>
-          <button type='submit' className='bg-blue-700 px-5 py-2 text-white rounded-l-md hover:bg-blue-800 transition-all ease-in duration-150 text-sm font-semibold' onClick={handleClick}>Send</button>
-          <button className='bg-blue-700 px-1 pb-1.5 pt-[5.5px] text-white rounded-r-md border-l border-black hover:bg-blue-800 transition-all ease-in duration-150'><ArrowDropDownIcon fontSize='small'/></button>
+          <button type='submit' className='bg-blue-700 dark:bg-blue-200 dark:hover:bg-blue-300 px-5 py-2 text-white dark:text-blue-700 rounded-l-md hover:bg-blue-800 transition-all ease-in duration-150 text-sm font-semibold' onClick={handleClick}>Send</button>
+          <button className='bg-blue-700 dark:bg-blue-200 dark:hover:bg-blue-300 px-1 pb-1.5 pt-[5.5px] dark:text-blue-700 text-white rounded-r-md border-l border-black hover:bg-blue-800 transition-all ease-in duration-150'><ArrowDropDownIcon fontSize='small'/></button>
         </div>
         
-        <div className='middle flex '>
-          <IconButton size=''>
+        <div className='middle flex dark:text-white'>
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <FormatUnderlinedIcon fontSize='small'/>
           </IconButton>
-          <IconButton size='' >
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <AttachFileIcon fontSize='small'/>
           </IconButton>
-          <IconButton size=''>
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <LinkIcon fontSize='small'/>
           </IconButton>
-          <IconButton size=''>
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <InsertDriveFileIcon fontSize='small'/>
           </IconButton>
-          <IconButton size=''>
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <InsertEmoticonIcon fontSize='small'/>
           </IconButton>
-          <IconButton size=''>
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <ImageIcon fontSize='small'/>
           </IconButton>
-          <IconButton size=''>
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <AddToDriveIcon fontSize='small'/>
           </IconButton>
-          <IconButton size=''>
+          <IconButton size='' color={theme=="dark"?"inherit":""}>
             <AutoFixHighIcon fontSize='small'/>
           </IconButton>
         </div>
-        <div className='right absolute right-3'>
-        <IconButton size=''>
+        <div className='right absolute right-3 dark:text-white'>
+        <IconButton size='' color={theme=="dark"?"inherit":""}>
             <MoreVertIcon fontSize='small'/>
           </IconButton>
-        <IconButton size=''>
+        <IconButton size='' color={theme=="dark"?"inherit":""}>
             <DeleteIcon fontSize='small'/>
           </IconButton>
         </div>

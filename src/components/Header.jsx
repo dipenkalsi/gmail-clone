@@ -25,12 +25,12 @@ const Header = () => {
         <img src="https://logodownload.org/wp-content/uploads/2018/03/gmail-logo-1-1.png" alt="" className='h-7 w-auto dark:invert' />
         </div>
       </div>
-      <div className='header_middle w-1/2 shadow-sm bg-indigo-50 py-1 px-1 rounded-lg'>
-        <div className='search_mail w-full flex items-center '>
+      <div className='header_middle w-1/2 shadow-sm bg-indigo-50 dark:bg-red-700  py-1 px-1 rounded-lg'>
+        <div className='search_mail w-full flex items-center dark:text-white'>
           <IconButton color={theme==="dark"?'inherit':""}>
             <SearchIcon/>
           </IconButton>
-          <input type="text" placeholder='Search in mail' className='ml-1 focus:ring-0 focus:outline-0 w-[85%] bg-transparent text-gray-600'/>
+          <input type="text" placeholder='Search in mail' className='dark:text-white dark:placeholder:text-red-300 ml-1 focus:ring-0 focus:outline-0 w-[85%] bg-transparent text-gray-600'/>
           <IconButton color={theme==="dark"?'inherit':""}>
             <TuneIcon/>
           </IconButton>
