@@ -24,18 +24,18 @@ const SentMails = () => {
         })))
       })
   },[])
-
+  console.log(emails)
   return (
-    <div className={`absolute top-0 pt-20 left-60 h-full z-0 w-[77%] pl-3 ${theme} ${theme==="dark"?"bg-[#00001a]":""}`}>
+    <div className={`absolute top-0 pt-20 left-0 pl-[15.5rem] h-full z-0 w-full pr-14 ${theme} ${theme==="dark"?"bg-[#00001a]":""}`}>
       <EmailListSetting Icon={ArrowBackIcon}/>
       <EmailType/>
       <div>
-      {
-          emails.filter(performCheck).length===0?<div className='h-52 text-3xl dark:text-red-200 text-gray-500 w-full flex items-center justify-center'>
-          No mails sent yet.
-        </div>:emails.filter(performCheck)?.map(({id,data})=>{
+        {
+           emails.filter(performCheck).length===0?<div className='h-52 text-3xl dark:text-red-200 text-gray-500 w-full flex items-center justify-center'>
+           No mails recieved yet.
+         </div>:emails.filter(performCheck)?.map(({id,data})=>{
             return <Link to={`/mail/${id}`}>
-            <EmailCard key={id} name={data.senderName} subject={data.subject} body={data.message} timestamp={new Date(data.timestamp?.seconds*1000).toLocaleTimeString()} from={data.from} senderPhoto={data.senderPhoto}/>
+            <EmailCard key={id} name={data.senderName} subject={data.subject} body={data.message} timestamp={new Date(data.timestamp?.seconds*1000).toLocaleTimeString()} from={data.from} senderPhoto={data.senderPhoto} to={data.to}/>
             </Link>
           })        
         }

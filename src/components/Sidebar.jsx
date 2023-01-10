@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <>
     {showCompose&&<Compose setShowCompose={showCompose}/>}
-    <div className={`fixed left-0 top-16 pt-4 h-full w-60 ${theme==="dark"?"bg-[#00001a] dark":""}`}>
+    <div className={`fixed left-0 z-20 top-16 pt-4 h-full w-60 ${theme==="dark"?"bg-[#00001a] dark":""}`}>
     <button className='flex mt-1 justify-center items-center space-x-2 text-lg border py-2 px-5 ml-2  hover:bg-red-50 transition-all ease-in duration-150 text-red-600 dark:text-red-200 dark:hover:bg-red-700 rounded-full shadow-sm dark:hover:border-red-700 ' onClick={()=>dispatch(openCompose())}>
         <CreateIcon/>
         <p>Compose</p>
