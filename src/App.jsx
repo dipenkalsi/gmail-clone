@@ -18,22 +18,8 @@ function App() {
   const dispatch=useDispatch()
   const theme=useSelector(selectTheme);
   const user=useSelector(selectUser)
-  useEffect(()=>{
-    auth.onAuthStateChanged((user)=>{
-      if(user){
-        dispatch(signIn({
-          displayName:user.displayName,
-          photoURL:user.photoURL,
-          email:user.email
-        }))
-      }
-      else{
-        dispatch(signOut())
-      }
-    })
-  },[])
   return (
-    <div className={theme==="dark"?"bg-[#00001a]":""}>
+    <div className={theme==="dark"?"bg-[#0d0d0d]":""}>
     {user ? (
       <Router>
       <Header/>

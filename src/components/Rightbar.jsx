@@ -7,7 +7,7 @@ import { selectTheme} from '../features/themeSlice'
 const Rightbar = () => {
   const theme=useSelector(selectTheme);
   return (
-    <div className={`fixed right-0 top-0 h-full pt-20 border-l flex flex-col items-center justify-between pb-5 px-[5px] ${theme} ${theme==='dark'?"bg-[#00001a]":""}`}>
+    <div className={`fixed right-0 top-0 h-full pt-20 border-l flex flex-col items-center justify-between pb-5 px-[5px] ${theme} ${theme==='dark'?"bg-[#0d0d0d]":""}`}>
       <div className='top space-y-3'>
         <div className='p-3 rounded-full hover:bg-black/[0.05] dark:hover:bg-white/[0.15] cursor-pointer'>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/768px-Google_Calendar_icon_%282020%29.svg.png" alt="" className='w-5 h-5'/>

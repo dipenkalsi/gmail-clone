@@ -13,11 +13,11 @@ const EmailType = () => {
             <InboxIcon/>
             <p>Primary</p>
         </div>
-        <div className='flex items-center dark:hover:border-red-100 justify-center space-x-3 font-semibold dark:hover:bg-red-100 dark:hover:text-red-700 dark:text-gray-100 text-gray-500 hover:bg-gray-50 transition-all ease-in duration-150 cursor-pointer py-3 pl-5 pr-28 border-b-2 border-white dark:border-[#00001a] hover:border-gray-50'>
+        <div className='flex items-center dark:hover:border-gray-800 justify-center space-x-3 font-semibold dark:hover:bg-gray-800 dark:text-gray-100 text-gray-500 hover:bg-gray-50 transition-all ease-in duration-150 cursor-pointer py-3 pl-5 pr-28 border-b-2 border-white dark:border-[#00001a] hover:border-gray-50'>
             <PeopleAltIcon/>
             <p>Socials</p>
         </div>
-        <div className='flex items-center dark:hover:border-red-100 justify-center space-x-3 font-semibold dark:hover:bg-red-100 dark:hover:text-red-700 dark:text-gray-100 text-gray-500 hover:bg-gray-50 transition-all ease-in duration-150 cursor-pointer py-3 pl-5 pr-28 border-b-2 border-white dark:border-[#00001a] hover:border-gray-50'>
+        <div className='flex items-center dark:hover:border-gray-800 justify-center space-x-3 font-semibold dark:hover:bg-gray-800 dark:text-gray-100 text-gray-500 hover:bg-gray-50 transition-all ease-in duration-150 cursor-pointer py-3 pl-5 pr-28 border-b-2 border-white dark:border-[#00001a] hover:border-gray-50'>
             <LocalOfferIcon/>
             <p>Promotions</p>
         </div>

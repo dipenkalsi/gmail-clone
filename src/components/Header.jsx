@@ -18,19 +18,19 @@ const Header = () => {
   const dispatch = useDispatch()
   return (
     <div className={`${theme}`}>
-    <div className={`header flex items-center justify-between px-2 py-3 border-b fixed top-0 w-full z-20 bg-white dark:bg-[#00001a] ${theme}`}>
+    <div className={`header flex items-center justify-between px-2 py-3 border-b fixed top-0 w-full z-40 bg-white dark:bg-[#0d0d0d] ${theme}`}>
       <div className='header_left flex items-center justify-center w-fit dark:text-white'>
         <IconButton color={theme==="dark"?'inherit':""}><MenuIcon/></IconButton>
         <div className='flex items-center justify-center space-x-4 ml-2 cursor-pointer'>
         <img src="https://logodownload.org/wp-content/uploads/2018/03/gmail-logo-1-1.png" alt="" className='h-7 w-auto dark:invert' />
         </div>
       </div>
-      <div className='header_middle w-1/2 shadow-sm bg-indigo-50 dark:bg-red-700  py-1 px-1 rounded-lg'>
+      <div className='header_middle w-1/2 shadow-sm bg-gray-100 dark:bg-gray-800  py-1 px-1 rounded-lg'>
         <div className='search_mail w-full flex items-center dark:text-white'>
           <IconButton color={theme==="dark"?'inherit':""}>
             <SearchIcon/>
           </IconButton>
-          <input type="text" placeholder='Search in mail' className='dark:text-white dark:placeholder:text-red-300 ml-1 focus:ring-0 focus:outline-0 w-[85%] bg-transparent text-gray-600'/>
+          <input type="text" placeholder='Search in mail' className='dark:text-white dark:placeholder:text-gray-100 ml-1 focus:ring-0 focus:outline-0 w-[85%] bg-transparent text-gray-600'/>
           <IconButton color={theme==="dark"?'inherit':""}>
             <TuneIcon/>
           </IconButton>

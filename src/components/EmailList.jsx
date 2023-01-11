@@ -25,7 +25,7 @@ const EmailList = () => {
       })
   },[])
   return (
-    <div className={`absolute top-0 pt-20 left-0 pl-[15.5rem] h-full z-0 w-full pr-14 ${theme} ${theme==="dark"?"bg-[#00001a]":""}`}>
+    <div className={`absolute top-0 pt-20 left-0 pl-[15.5rem] h-full z-0 w-full pr-14 ${theme} ${theme==="dark"?"bg-[#0d0d0d]":""}`}>
       <EmailListSetting Icon={CheckBoxOutlineBlankIcon}/>
       <EmailType/>
       <div>   

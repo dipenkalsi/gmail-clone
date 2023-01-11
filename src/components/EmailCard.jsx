@@ -26,7 +26,7 @@ const EmailCard = ({name , subject , body , timestamp , from , senderName , send
     }))
   }
   return (
-    <div className={`border-b hover:shadow-md  cursor-pointer transition-all ease-in duration-150 flex justify-between items-center px-3 ${theme==="dark"?"dark:hover:bg-red-700 shadow-white":""} hover:bg-gray-50 py-0.5 ${theme}`} onClick={setMail}>
+    <div className={`border-b hover:shadow-md  cursor-pointer transition-all ease-in duration-150 flex justify-between items-center px-3 ${theme==="dark"?"dark:hover:bg-gray-800 shadow-white":""} hover:bg-gray-50 py-0.5 ${theme}`} onClick={setMail}>
       <div className='left flex items-center space-x-2'>
         <div className='text-gray-300 dark:text-white'>
             <IconButton size='small' color={theme==="dark"?"inherit":""} >

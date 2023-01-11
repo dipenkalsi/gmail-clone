@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <>
     {showCompose&&<Compose setShowCompose={showCompose}/>}
-    <div className={`fixed left-0 z-20 top-16 pt-4 h-full w-60 ${theme==="dark"?"bg-[#00001a] dark":""}`}>
+    <div className={`fixed left-0 z-20 top-16 pt-4 h-full w-60 ${theme==="dark"?"bg-[#0d0d0d] dark":""}`}>
     <button className='flex mt-1 justify-center items-center space-x-2 text-lg border py-2 px-5 ml-2  hover:bg-red-50 transition-all ease-in duration-150 text-red-600 dark:text-red-200 dark:hover:bg-red-700 rounded-full shadow-sm dark:hover:border-red-700 ' onClick={()=>dispatch(openCompose())}>
         <CreateIcon/>
         <p>Compose</p>
@@ -58,7 +58,7 @@ const Sidebar = () => {
     </div>
     <div >
     <p className='ml-4 text-gray-700 dark:text-red-100 font-md font-bold mt-1 mb-1'>Hangouts</p>
-    <div className='flex items-center justify-between text-gray-600 transition-all ease-in duration-150 dark:text-gray-100 dark:hover:text-red-700 hover:bg-gray-50 dark:hover:bg-red-100 cursor-pointer pr-3 rounded-r-full'>
+    <div className='flex items-center justify-between text-gray-600 transition-all ease-in duration-150 dark:text-gray-100  hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer pr-3 rounded-r-full'>
         <div className='flex items-center justify-center pl-3 space-x-2'>
         <div className='p-1 hover:bg-black/[0.1] w-fit rounded-full cursor-pointer'>
           <img src={user.photoURL} alt="" className='w-9 h-9 rounded-full object-cover' />
